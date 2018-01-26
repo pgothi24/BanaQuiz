@@ -8,7 +8,6 @@ class Thumbnail extends Component {
             pathname: '/quiz',
             state: {
                 id: this.props.id,
-                type: this.props.type
             }
         }}>
           <div>

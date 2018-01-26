@@ -43,9 +43,9 @@ class ThumbnailMain extends Component {
         if(this.props.thumbData.iq){
             return (
                 <div className='thumbnailMain'>
-                    <ThumbnailList data={this.props.thumbData.iq} title='IQ Quizzes' type='quiz_iq'/>
-                    <ThumbnailList data={this.props.thumbData.personality} title='Personality Quizzes' type='quiz_personality'/>
-                    <ThumbnailList data={this.props.thumbData.fun} title='Fun Quizzes' type='quiz_fun'/>
+                    <ThumbnailList data={this.props.thumbData.iq} title='IQ Quizzes'/>
+                    <ThumbnailList data={this.props.thumbData.personality} title='Personality Quizzes'/>
+                    <ThumbnailList data={this.props.thumbData.fun} title='Fun Quizzes'/>
                 </div>
             )
         } else {

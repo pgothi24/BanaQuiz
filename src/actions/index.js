@@ -12,7 +12,7 @@ export function setThumbnailData(data) {
     }
 }
 
-export function setQuizData(data) {
+export function setQuizData(data, id, type) {
     return {
         type: 'QUIZDATA',
         data

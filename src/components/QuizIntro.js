@@ -20,8 +20,6 @@ class QuizIntro extends Component {
         });
     }
     render() {
-        let quizId = this.props.location.state.id;
-        let quizType = this.props.location.state.type;
         let quizInfo = this.props.quizData;
         if(quizInfo){
             return (
@@ -48,16 +46,7 @@ class QuizIntro extends Component {
                             <img src={quizInfo.thumbnail} className="thumbnail-image" alt="quiz_image" />
                         </div>
                     }
-                    <Link to={
-                            {
-                                pathname: '/quiz/questions',
-                                state: {
-                                    questionsList: quizInfo.questions,
-                                    resultList : quizInfo.result_descriptions,
-                                    quizType,
-                                    quizId
-                            }
-                        }}>
+                    <Link to={{pathname: '/quiz/questions'}}>
                         <div>
                             <Button bsStyle="success" bsSize="large">START</Button>
                             </div>
@@ -73,7 +62,7 @@ class QuizIntro extends Component {
 function mapStateToProps(state){
     return{
         token: state.quiz.token,
-        quizData: state.quizData,
+        quizData: state.quiz.quizData,
     }
 }
 

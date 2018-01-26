@@ -10,7 +10,7 @@ body {
     background-color: #F0F0F0;
 }
 .container{
-    margin-bottom: 15px;
+    margin-bottom: 65px;
 }
 
 @media (min-width: 750px){
@@ -65,7 +65,7 @@ body {
 
 .scroll-img{
     position: absolute;
-    bottom: 10px;
+    bottom: 50px;
     left:42%;
     right: 42%;
     -webkit-animation:bounce 2.5s infinite;
@@ -141,6 +141,112 @@ body {
 @media (min-width: 1170px){
   .thumbnailMain{
     max-width:70%;
+    margin: auto;
+  }
+}
+
+/* ----------QuizIntro Component--------- */
+.quizIntro{
+  margin-top: 10px;
+  padding: 5%;
+  background-color: rgba(248,231,28,0.50);
+  text-align: center;
+}
+.divHome{
+    width: 100%;
+    text-align: left;
+}
+.page-header{
+    margin-top:0px;
+}
+.quizTitle{
+  text-align: center;
+  border-bottom: 0px;
+}
+
+.quizTitle h1{
+    font-size: 25px;
+    font-weight: bolder;
+}
+.quizDescription{
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.question{
+  font-weight: bolder;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.question img{
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.answer{
+  background-color: #FFFFFF;
+  background-image: none;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+}
+.well:hover{
+    border:1px solid #333;
+}
+
+.answer img{
+  height: 75px;
+}
+
+.btnTryAgain{
+    width: 160px;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.btnTryAgain span{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+.progressBar{
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+.circle {
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #737373;
+}
+.active{
+    background-color: #ddd;
+}
+.visited{
+    background-color: rgba(248,231,28,1);
+}
+
+@media (min-width: 750px){
+  .questionMain{
+    max-width:100%;
+  }
+}
+
+@media (min-width: 970px){
+  .questionMain{
+    max-width:75%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1170px){
+  .questionMain{
+    max-width:75%;
     margin: auto;
   }
 }

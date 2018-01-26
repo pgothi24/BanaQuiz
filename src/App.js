@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import QuizIntro from './components/QuizIntro'
+import QuizIntro from './components/QuizIntro';
 import Quiz from './components/Quiz';
-import Result from './components/Result'
+import Result from './components/Result';
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route path='/quiz/questions' component={Quiz}/>
                     <Route path='/quiz/result' component={Result}/>
                 </Switch>
+                <Footer />
             </div>
       </BrowserRouter>
     );

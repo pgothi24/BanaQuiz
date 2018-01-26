@@ -17,17 +17,17 @@ class ThumbnailList extends Component {
           rows.push(
               <Row key={thumbnails[i].id}>
                 <Col xs={6} md={6}>
-                  <Thumbnail quizTitle={thumbnails[i].title} quizImage={thumbnails[i].thumbnail} key={thumbnails[i].id} id={thumbnails[i].id} type={this.props.type}/>
+                  <Thumbnail quizTitle={thumbnails[i].title} quizImage={thumbnails[i].thumbnail} key={thumbnails[i].id} id={thumbnails[i].id}/>
                 </Col>
                 <Col xs={6} md={6}>
-                  <Thumbnail quizTitle={thumbnails[i+1].title} quizImage={thumbnails[i+1].thumbnail} key={thumbnails[i+1].id} id={thumbnails[i+1].id} type={this.props.type}/>
+                  <Thumbnail quizTitle={thumbnails[i+1].title} quizImage={thumbnails[i+1].thumbnail} key={thumbnails[i+1].id} id={thumbnails[i+1].id}/>
                 </Col>
               </Row>);
         }else {
           rows.push(
               <Row key={thumbnails[i].id}>
                 <Col xs={6} md={6}>
-                  <Thumbnail quizTitle={thumbnails[i].title} quizImage={thumbnails[i].thumbnail} key={thumbnails[i].id} id={thumbnails[i].id} type={this.props.type} />
+                  <Thumbnail quizTitle={thumbnails[i].title} quizImage={thumbnails[i].thumbnail} key={thumbnails[i].id} id={thumbnails[i].id}/>
                 </Col>
               </Row>);
         }
