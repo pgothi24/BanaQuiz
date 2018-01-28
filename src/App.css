@@ -12,7 +12,27 @@ body {
 .container{
     margin-bottom: 65px;
 }
-
+.container-footer{
+    width: 100%;
+    margin-bottom: 0px;
+    line-height: 50px;
+    text-align: center;
+}
+.container-footer ul{
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0px;
+}
+.container-footer ul li{
+    text-align: center;
+    display: inline;
+}
+.container-footer ul a{
+    padding-right: 20px;
+}
+.container-footer ul .a-last{
+    padding-right: 0px;
+}
 @media (min-width: 750px){
   .container{
     max-width:100%;
@@ -165,7 +185,7 @@ body {
 }
 
 .quizTitle h1{
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bolder;
 }
 .quizDescription{
@@ -173,7 +193,9 @@ body {
   font-size: 17px;
   margin-bottom: 30px;
 }
-
+.quizImage{
+    width: 70%;
+}
 .question{
   font-weight: bolder;
   font-size: 20px;

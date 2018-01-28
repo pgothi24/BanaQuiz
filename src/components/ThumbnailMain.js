@@ -15,24 +15,24 @@ class ThumbnailMain extends Component {
             token = response.data
         })
         this.props.setJWTtoken('JWT '+token.token)
-        if(this.props.token !== ''){
+        if(this.props.token !== '' && this.props.thumbdata !== null ){
             let config = {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': this.props.token,
                 }
             }
-            let thumbnailData = {'iq': [], 'fun': [], 'personality': []}
+            let thumbnailData = {}
             await axios.get('https://nth-avatar-191412.appspot.com/banaquiz/api/quizzes/', config)
                 .then((response) => {
-                    console.log(response.data);
-                    response.data.map((obj) => {
-                        if(obj.category === 'IQ'){
-                            thumbnailData.iq.push(obj)
-                        } else if(obj.category === 'Fun'){
-                            thumbnailData.fun.push(obj)
-                        } else if(obj.category === 'Personality'){
-                            thumbnailData.personality.push(obj)
+                    let data = response.data.sort((a,b) => {
+                        return new Date(a.date_created).getTime() > new Date(b.date_created).getTime() ? -1 : 1
+                    })
+                    data.map((obj) => {
+                        if(thumbnailData[obj.category] === undefined){
+                            thumbnailData[obj.category] = [obj]
+                        } else {
+                            thumbnailData[obj.category].push(obj)
                         }
                     })
                     this.props.setThumbnailData(thumbnailData)
@@ -40,12 +40,16 @@ class ThumbnailMain extends Component {
         }
     }
     render() {
-        if(this.props.thumbData.iq){
+        if(this.props.thumbData !== null){
             return (
                 <div className='thumbnailMain'>
-                    <ThumbnailList data={this.props.thumbData.iq} title='IQ Quizzes'/>
-                    <ThumbnailList data={this.props.thumbData.personality} title='Personality Quizzes'/>
-                    <ThumbnailList data={this.props.thumbData.fun} title='Fun Quizzes'/>
+                    {
+                        Object.keys(this.props.thumbData).map((quizType) => {
+                            return (
+                                <ThumbnailList data={this.props.thumbData[quizType]} title={quizType +' Quizzes'}/>
+                            )
+                        })
+                    }
                 </div>
             )
         } else {

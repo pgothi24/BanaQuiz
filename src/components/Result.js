@@ -16,17 +16,8 @@ class QuizResult extends Component {
   }
 
   moreQuizList(){
-
-    if(this.quizType === 'IQ'){
-        let data = this.thumbnailData.iq.filter((obj) => obj.id !== this.quizId);
-        return <ThumbnailList data={data} title='More IQ Quizzes'/>
-    } else if(this.quizType === 'Personality'){
-        let data = this.thumbnailData.personality.filter((obj) => {return obj.id !== this.quizId});
-        return <ThumbnailList data={data} title='Personality Quizzes'/>
-    } else if(this.quizType === 'Fun'){
-        let data = this.thumbnailData.fun.filter((obj) => {return obj.id !== this.quizId});
-        return <ThumbnailList data={data} title='Fun Quizzes'/>
-    }
+    let data = this.thumbnailData[this.quizType].filter((obj) => obj.id !== this.quizId);
+    return <ThumbnailList data={data} title={'More ' +this.quizType+ ' Quizzes'} />
   }
 
   render() {
@@ -44,19 +35,15 @@ class QuizResult extends Component {
                     </ButtonGroup>
                 </Link>
             </div>
-            {
-                this.structure === 'CorrectAnswer' ?
-                    <div>
-                        <PageHeader className="quizTitle">
-                          {score}
-                        </PageHeader>
-                        <div className="quizDescription" dangerouslySetInnerHTML={{__html: result}}>
-                        </div>
-                    </div>
-                :
+                <div>
+                    <PageHeader className="quizTitle">
+                    {
+                        this.structure === 'CorrectAnswer' ? score : ''
+                    }
+                    </PageHeader>
                     <div className="quizDescription" dangerouslySetInnerHTML={{__html: result}}>
                     </div>
-            }
+                </div>
             <div>
                 <Link to={{
                     pathname: '/quiz',

@@ -5,7 +5,11 @@ import Home from './components/Home';
 import QuizIntro from './components/QuizIntro';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import About from './components/About';
+import Privacy from './components/Privacy';
+import Contact from './components/Contact';
+
 
 class App extends Component {
   render() {
@@ -17,6 +21,9 @@ class App extends Component {
                     <Route exact path='/quiz' component={QuizIntro}/>
                     <Route path='/quiz/questions' component={Quiz}/>
                     <Route path='/quiz/result' component={Result}/>
+                    <Route exact path='/about' component={About}/>
+                    <Route exact path='/privacy' component={Privacy}/>
+                    <Route exact path='/contact' component={Contact}/>
                 </Switch>
                 <Footer />
             </div>

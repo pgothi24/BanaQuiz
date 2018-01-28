@@ -18,7 +18,7 @@ class Quiz extends Component {
       questionIndex:0,
       score:0,
       structure: this.props.quizData.structure,
-      totalQuestions:this.questionsList.length,
+      totalQuestions:this.props.quizData.questions.length,
       correctAns: '',
     };
   }
@@ -96,7 +96,7 @@ class Quiz extends Component {
         for(i=this.state.questionIndex;i<this.state.totalQuestions;i++){
             active.push(<div className="circle active" key={i}></div>);
         }
-        if(this.state.questionIndex < this.state.totalQuestions){
+        if(this.state.questionIndex < this.state.totalQuestions && this.props.quizData.questions.length !== 0){
             return (
                 <div className="questionMain">
                     <div className="progressBar">
@@ -108,7 +108,7 @@ class Quiz extends Component {
                     />
                 </div>
             );
-        }else{
+        }else if(this.props.quizData.questions.length !== 0){
                 let result = this.calculateResult();
                 let score = this.state.score + "/" + this.state.totalQuestions;
                 return <Redirect to={{
@@ -118,7 +118,10 @@ class Quiz extends Component {
                         score
                     }
                 }} />
-            }
+        } else {
+            return ''
+        }
+
     }
 }
 

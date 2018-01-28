@@ -43,8 +43,8 @@ class ThumbnailList extends Component {
                 <Button
                   bsStyle="primary"
                   bsSize="large"
-                  onClick={() => this.setState({ load: listLen })}
-                >Load More Quizzes ({ listLen - 4})
+                  onClick={() => this.setState({ load: this.state.load+2 })}
+                >Load More Quizzes ({ listLen - this.state.load})
                 </Button>
               </Col>
             </Row>
