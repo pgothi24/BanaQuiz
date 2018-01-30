@@ -13,7 +13,7 @@ Frontend for simple mobile friendly(responsive) quiz
 - React Router v4
 - React-bootstrap
 
-## Folder Structure
+# Folder Structure
 ```
 quizapp
  └── src
@@ -52,4 +52,10 @@ quizapp
     ├── manifest.json
  └── package.json
  └── README.md
-    
+```
+
+# Component Description
+### src/index.js
+- Entry point of the application
+- Initialization of Redux store
+- Renders App Component
