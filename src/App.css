@@ -127,6 +127,10 @@ body {
   width: 100%;
 }
 
+.loading {
+  background: transparent url('./images/img_loader.gif') center no-repeat;
+}
+
 .thumbnail-title{
   background-color: #FFFFFF;
   color: #333;
@@ -214,10 +218,12 @@ body {
   font-size: 17px;
   cursor: pointer;
 }
-.well:hover{
-    border:1px solid #333;
-}
 
+@media(hover: hover), (hover: on-demand){
+    .well:hover{
+        border:1px solid #333;
+    }
+}
 .answer img{
   height: 75px;
 }

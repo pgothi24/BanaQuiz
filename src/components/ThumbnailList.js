@@ -12,7 +12,7 @@ class ThumbnailList extends Component {
       let listLen = this.props.data.length
       let rows = []
       let thumbnails = this.props.data;
-      for (var i = 0; i < this.state.load; i+=2) {
+      for (var i = 0; i < this.state.load && i<listLen; i+=2) {
         if(i+1 < listLen){
           rows.push(
               <Row key={thumbnails[i].id}>
@@ -23,7 +23,7 @@ class ThumbnailList extends Component {
                   <Thumbnail quizTitle={thumbnails[i+1].title} quizImage={thumbnails[i+1].thumbnail} key={thumbnails[i+1].id} id={thumbnails[i+1].id}/>
                 </Col>
               </Row>);
-        }else {
+        }else{
           rows.push(
               <Row key={thumbnails[i].id}>
                 <Col xs={6} md={6}>
@@ -32,7 +32,7 @@ class ThumbnailList extends Component {
               </Row>);
         }
       }
-      if(listLen > 4 && this.state.load === 4) {
+      if(listLen > 4 && this.state.load < listLen) {
       return (
         <div className="thumbnailList">
           <PageHeader className="quiz-type"><small>{ this.props.title }</small></PageHeader>
@@ -43,7 +43,7 @@ class ThumbnailList extends Component {
                 <Button
                   bsStyle="primary"
                   bsSize="large"
-                  onClick={() => this.setState({ load: this.state.load+2 })}
+                  onClick={() => this.setState({ load: this.state.load+4 })}
                 >Load More Quizzes ({ listLen - this.state.load})
                 </Button>
               </Col>

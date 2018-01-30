@@ -81,7 +81,6 @@ class Quiz extends Component {
             }
         })
         let result = this.resultList.filter((res) => res.value === maxKey)
-        console.log(result);
         resultValue = result[0].description
     }
     return resultValue;
@@ -112,7 +111,7 @@ class Quiz extends Component {
                 let result = this.calculateResult();
                 let score = this.state.score + "/" + this.state.totalQuestions;
                 return <Redirect to={{
-                    pathname: '/quiz/result',
+                    pathname: '/quiz/'+this.props.match.params.id+'/result',
                     state: {
                         result,
                         score

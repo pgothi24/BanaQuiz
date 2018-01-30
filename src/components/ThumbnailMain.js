@@ -3,9 +3,13 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ThumbnailList from './ThumbnailList';
 import axios from 'axios';
+// import { BarLoader } from 'react-spinners';
 import { setJWTtoken, setThumbnailData } from '../actions/index';
 
 class ThumbnailMain extends Component {
+    constructor(props) {
+        super(props);
+    }
     async componentDidMount(){
         let token = ''
         await axios.post('https://nth-avatar-191412.appspot.com/auth-jwt/', {
@@ -40,16 +44,16 @@ class ThumbnailMain extends Component {
         }
     }
     render() {
-        if(this.props.thumbData !== null){
+        if(this.props.thumbData){
             return (
                 <div className='thumbnailMain'>
-                    {
-                        Object.keys(this.props.thumbData).map((quizType) => {
-                            return (
-                                <ThumbnailList data={this.props.thumbData[quizType]} title={quizType +' Quizzes'}/>
-                            )
-                        })
-                    }
+                {
+                    Object.keys(this.props.thumbData).map((quizType) => {
+                        return (
+                            <ThumbnailList data={this.props.thumbData[quizType]} title={quizType +' Quizzes'}/>
+                        )
+                    })
+                }
                 </div>
             )
         } else {

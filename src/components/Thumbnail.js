@@ -4,15 +4,10 @@ import { Link } from 'react-router-dom';
 class Thumbnail extends Component {
   render() {
     return (
-        <Link to={{
-            pathname: '/quiz',
-            state: {
-                id: this.props.id,
-            }
-        }}>
+        <Link to={{ pathname: '/quiz/'+this.props.id }} >
           <div>
             <div>
-              <img src={this.props.quizImage} className="thumbnail-image" alt="quiz_image" />
+              <img src={this.props.quizImage} className="thumbnail-image loading" alt="quiz_image" />
             </div>
             <div className="thumbnail-title">
               {this.props.quizTitle}

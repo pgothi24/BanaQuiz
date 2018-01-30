@@ -3,30 +3,62 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import axios from 'axios';
-import { setQuizData } from '../actions/index';
+import { setQuizData, setJWTtoken, setThumbnailData } from '../actions/index';
 import { PageHeader, Button, Glyphicon, ButtonGroup } from 'react-bootstrap';
 
 class QuizIntro extends Component {
     constructor(props){
         super(props);
-        this.state = {disabled : true}
+        this.state = {disabled : true, error: false}
     }
     async componentDidMount(){
+        if(this.props.token === '' && this.props.match.params.id){
+            let token = ''
+            await axios.post('https://nth-avatar-191412.appspot.com/auth-jwt/', {
+                username: 'myfriend',
+                password: 'atfiverr'
+            }).then((response) => {
+                token = response.data
+            })
+            this.props.setJWTtoken('JWT '+token.token)
+        }
         let config = {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
             }
         }
-        await axios.get('https://nth-avatar-191412.appspot.com/banaquiz/api/quizzes/'+ this.props.location.state.id+'/', config)
+        if(this.props.token !== '' && this.props.thumbdata !== null ){
+            let thumbnailData = {}
+            await axios.get('https://nth-avatar-191412.appspot.com/banaquiz/api/quizzes/', config)
+                .then((response) => {
+                    let data = response.data.sort((a,b) => {
+                        return new Date(a.date_created).getTime() > new Date(b.date_created).getTime() ? -1 : 1
+                    })
+                    data.map((obj) => {
+                        if(thumbnailData[obj.category] === undefined){
+                            thumbnailData[obj.category] = [obj]
+                        } else {
+                            thumbnailData[obj.category].push(obj)
+                        }
+                    })
+                    this.props.setThumbnailData(thumbnailData)
+                })
+        }
+        await axios.get('https://nth-avatar-191412.appspot.com/banaquiz/api/quizzes/'+ this.props.match.params.id+'/', config)
         .then((response) => {
                 this.props.setQuizData(response.data)
                 this.setState({disabled: false})
+        }).catch((error) => {
+                console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
+              this.setState({error: true})
         });
     }
     render() {
         let quizInfo = this.props.quizData;
-        if(quizInfo){
+        if(Object.keys(quizInfo).length){
             return (
                 <div className="quizIntro">
                     <div className="divHome">
@@ -51,7 +83,7 @@ class QuizIntro extends Component {
                             <img src={quizInfo.thumbnail} className="quizImage" alt="quiz_image" />
                         </div>
                     }
-                    <Link to={{pathname: '/quiz/questions'}}>
+                    <Link to={{pathname: '/quiz/'+this.props.match.params.id+'/questions'}}>
                         <div>
                             <Button bsStyle="success" bsSize="large" disabled = {this.state.disabled}>START</Button>
                             </div>
@@ -59,7 +91,7 @@ class QuizIntro extends Component {
                 </div>
             );
         } else {
-            return '';
+            return this.state.error ? 'Some error occured' : 'Loading the quiz...';
         }
 
     }
@@ -73,6 +105,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ setQuizData,
+                                setJWTtoken,
+                                setThumbnailData
                             }, dispatch);
 }
 
