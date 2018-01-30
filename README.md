@@ -1,6 +1,18 @@
-# About
 # Installation
+- Download the quizapp project folder
+- cd quizapp/
+- npm install
+- npm start -> This command will start application in development environment
+
 # Description
+Frontend for simple mobile friendly(responsive) quiz 
+
+# Features
+- React
+- Redux
+- React Router v4
+- React-bootstrap
+
 ## Folder Structure
 ```
 quizapp
@@ -23,4 +35,21 @@ quizapp
     │    ├── ThumbnailList.js
     │    └── ThumbnailMain.js
     ├── images
+    │    ├── image_loader.gif
+    │    ├── logo.png
+    │    ├── scroll.png    
     ├── reducers
+    │    ├── index.js
+    │    ├── quizData.js
+    ├── .babelrc
+    ├── App.css
+    ├── App.js
+    ├── ComicSans.ttf
+    ├── index.js
+ └── public
+    ├── favicon.ico
+    ├── index.html
+    ├── manifest.json
+ └── package.json
+ └── README.md
+    
