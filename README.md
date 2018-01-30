@@ -55,7 +55,9 @@ quizapp
 ```
 
 # Component Description
+
 ### src/index.js
+
 - Entry point of the application
 - Initialization of Redux store
 - Renders App Component
