@@ -46,11 +46,7 @@ class QuizResult extends Component {
                 </div>
             <div>
                 <Link to={{
-                    pathname: '/quiz',
-                    state: {
-                        id:this.quizId,
-                        type:this.quizType
-                    }
+                    pathname: '/quiz/'+this.quizId
                     }}>
                     <Button bsStyle="success" bsSize="large" className="btnTryAgain" >
                         <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>
